@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bngdqqkq0tpl5"]
+
+[ext_resource type="Script" uid="uid://iv1osjrx7qsc" path="res://Game/Cannon/trajectory_line.gd" id="1_bj1y0"]
+
+[node name="TrajectoryLine" type="Line2D"]
+script = ExtResource("1_bj1y0")
