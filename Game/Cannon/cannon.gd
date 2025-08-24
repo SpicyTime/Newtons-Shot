@@ -1,9 +1,12 @@
 extends Node2D
 @export var shot_force: int = 250
+@export var player_gravity_scale = 1.0
+@export var max_points: int = 10
 var rotating_left: bool = false
 var rotating_right: bool = false
 var shot: bool = false
 @onready var cannon_sprite: Sprite2D = $CannonSprite
+@onready var trajectory_line: TrajectoryLine = $TrajectoryLine
 
 func _physics_process(delta: float) -> void:
 	_handle_input()
@@ -12,6 +15,9 @@ func _physics_process(delta: float) -> void:
 		
 	if shot:
 		SignalBus.cannon_fired.emit(cannon_sprite.rotation - PI / 2, shot_force)
+		
+	var cannon_direction: Vector2 = Vector2(cos(cannon_sprite.rotation - PI / 2), sin(cannon_sprite.rotation - PI / 2))
+	trajectory_line.update_trajectory(cannon_direction, shot_force, 980 * player_gravity_scale, max_points, delta)
 	
 	
 func _handle_input() -> void:
@@ -20,6 +26,7 @@ func _handle_input() -> void:
 	shot = Input.is_action_just_pressed("shoot")
 	if Input.is_key_pressed(KEY_R):
 		get_tree().reload_current_scene()
+	
 	
 func _rotate_cannon(delta: float) -> void:
 	var rotation_amount = 6 * delta

@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://iv1osjrx7qsc" path="res://Game/Cannon/trajectory_line.gd" id="1_bj1y0"]
 
 [node name="TrajectoryLine" type="Line2D"]
+width = 2.0
 script = ExtResource("1_bj1y0")

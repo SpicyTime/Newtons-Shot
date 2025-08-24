@@ -3,12 +3,11 @@ var is_in_cannon: bool = true
 
 func _ready() -> void:
 	SignalBus.cannon_fired.connect(_on_cannon_fired)
-
+	
+	
 func apply_cannon_force(direction: Vector2, force: float):
 	if is_in_cannon:
 		freeze = false
-		print("Shot")
-		print(direction * force)
 		linear_velocity = direction * force
 
 
