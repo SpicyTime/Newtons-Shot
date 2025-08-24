@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbgk0ks74rlnx"]
+
+[ext_resource type="Script" uid="uid://bj6y0skyebh38" path="res://Game/subpixel_camera.gd" id="1_amalf"]
+
+[node name="SubpixelCamera" type="Camera2D"]
+script = ExtResource("1_amalf")
