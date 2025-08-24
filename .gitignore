@@ -1,0 +1,22 @@
+# Godot import cache (regenerated automatically)
+.import/
+.godot/
+
+# Exported builds
+export/
+build/
+bin/
+export_presets.cfg
+
+# Auto-generated UID/resource metadata
+*.uid
+
+# Logs and temp files
+*.log
+*.tmp
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
