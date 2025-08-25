@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://gotgmedflc2f"]
+
+[ext_resource type="Script" uid="uid://bkkl56tp660jx" path="res://Terrain System/terrain.gd" id="1_vroio"]
+[ext_resource type="PackedScene" uid="uid://bregov0ink04c" path="res://Terrain System/base_terrain_piece.tscn" id="2_vroio"]
+
+[node name="Terrain" type="Node2D"]
+script = ExtResource("1_vroio")
+
+[node name="TerrainPiece1" parent="." instance=ExtResource("2_vroio")]
+
+[node name="TerrainPiece2" parent="." instance=ExtResource("2_vroio")]

@@ -1,0 +1,2 @@
+class_name TerrainPiece
+extends StaticBody2D

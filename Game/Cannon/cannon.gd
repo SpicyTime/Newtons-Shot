@@ -21,11 +21,10 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _handle_input() -> void:
+	
 	rotating_left = Input.is_action_pressed("rotate_left")
 	rotating_right = Input.is_action_pressed("rotate_right")
 	shot = Input.is_action_just_pressed("shoot")
-	if Input.is_key_pressed(KEY_R):
-		get_tree().reload_current_scene()
 	
 	
 func _rotate_cannon(delta: float) -> void:
