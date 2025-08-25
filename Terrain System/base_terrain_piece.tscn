@@ -1,8 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://bregov0ink04c"]
-
-[ext_resource type="Script" uid="uid://bduyejh2k6jw6" path="res://Terrain System/base_terrain_piece.gd" id="1_5caaf"]
+[gd_scene format=3 uid="uid://bregov0ink04c"]
 
 [node name="BaseTerrainPiece" type="StaticBody2D"]
-script = ExtResource("1_5caaf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

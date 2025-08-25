@@ -15,19 +15,14 @@ func apply_cannon_force(direction: Vector2, force: float):
 	
 	
 func reset() -> void:
-	reset_pending = true
-	
-	#position = original_position
+	await get_tree().create_timer(0.0001).timeout
+	position = original_position
 	freeze = true
 	linear_velocity = Vector2.ZERO
 	is_in_cannon = true
 	
 	
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	if reset_pending:
-		while state.transform.origin != original_position:
-			state.transform.origin = original_position
-		reset_pending = false
+
 		
 		
 func _on_cannon_fired(cannon_rotation: float, force: float) -> void:

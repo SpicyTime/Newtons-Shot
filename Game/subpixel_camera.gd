@@ -63,13 +63,12 @@ func lerp_to(target_position: Vector2 = Vector2.ZERO, lerp_weight: float = 0.01,
 			await get_tree().process_frame
 	else:
 		pass
-
-
+	
+	
 func reset() -> void:
 	global_position = original_position
 	cancel_follow = true
 	
-
+	
 func _on_cannon_fired(rotation: float, force: float) -> void:
-	print("Cancelling")
 	cancel_follow = false
