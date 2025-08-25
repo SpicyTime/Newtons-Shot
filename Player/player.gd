@@ -1,7 +1,7 @@
 extends RigidBody2D
 var is_in_cannon: bool = true 
 var original_position: Vector2 = Vector2.ZERO
-
+var reset_pending: bool = false
 func _ready() -> void:
 	original_position = global_position
 	SignalBus.cannon_fired.connect(_on_cannon_fired)
@@ -13,12 +13,23 @@ func apply_cannon_force(direction: Vector2, force: float):
 		linear_velocity = direction * force
 		is_in_cannon = false
 	
+	
 func reset() -> void:
-	position = original_position
-	global_position = original_position
+	reset_pending = true
+	
+	#position = original_position
 	freeze = true
 	linear_velocity = Vector2.ZERO
 	is_in_cannon = true
+	
+	
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if reset_pending:
+		while state.transform.origin != original_position:
+			state.transform.origin = original_position
+		reset_pending = false
+		
+		
 func _on_cannon_fired(cannon_rotation: float, force: float) -> void:
 	var shot_direction = Vector2(cos(cannon_rotation), sin(cannon_rotation) )
 	apply_cannon_force(shot_direction, force)

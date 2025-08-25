@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 	if shot:
 		SignalBus.cannon_fired.emit(cannon_sprite.rotation - PI / 2, shot_force)
 		
+		get_parent().camera_follow_player()
 	var cannon_direction: Vector2 = Vector2(cos(cannon_sprite.rotation - PI / 2), sin(cannon_sprite.rotation - PI / 2))
 	trajectory_line.update_trajectory(cannon_direction, shot_force, 980 * player_gravity_scale, max_points, delta)
 	

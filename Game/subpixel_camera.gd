@@ -12,21 +12,21 @@ func _ready() -> void:
 	position_smoothing_enabled = smoothing_enabled
 	if position_smoothing_enabled:
 		position_smoothing_speed = smoothing_speed
-	
+	SignalBus.cannon_fired.connect(_on_cannon_fired)
 	#move_to(Vector2(100, 100), 10.0)
 	#lerp_to(Vector2(100, 100), 0.01)
 	
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if snap_to_pixels:
 		var snapped: Vector2 = (global_position * pixels_per_unit).round()
 		global_position = snapped
 	
 	
-func follow_node(node: Node2D, offset: Vector2 = Vector2.ZERO, should_lerp: bool = false) -> void:
+func follow_node(node: Node2D, cam_offset: Vector2 = Vector2.ZERO, should_lerp: bool = false) -> void:
 	var position_reached: bool = false
 	while not cancel_follow:
-		var target_position: Vector2 = node.global_position + offset
+		var target_position: Vector2 = node.global_position + cam_offset
 		# If the position has not been reached we move the camera, either learping or not
 		if not position_reached:
 			if not should_lerp:
@@ -55,6 +55,7 @@ func move_to(target_position: Vector2 = Vector2.ZERO, camera_speed: float = 10.0
 		else:
 			global_position = target_position
 	
+	
 func lerp_to(target_position: Vector2 = Vector2.ZERO, lerp_weight: float = 0.01, asynchornously: bool = false) -> void:
 	if asynchornously:
 		while target_position.distance_to(global_position) > 1:
@@ -63,5 +64,12 @@ func lerp_to(target_position: Vector2 = Vector2.ZERO, lerp_weight: float = 0.01,
 	else:
 		pass
 
+
 func reset() -> void:
 	global_position = original_position
+	cancel_follow = true
+	
+
+func _on_cannon_fired(rotation: float, force: float) -> void:
+	print("Cancelling")
+	cancel_follow = false
