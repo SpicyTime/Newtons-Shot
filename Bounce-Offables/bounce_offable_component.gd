@@ -11,14 +11,14 @@ func _ready() -> void:
 	parent.body_entered.connect(_on_bounce_offable_area_body_entered)
 	parent.collision_layer = Constants.BOUNCE_OFFABLE_LAYER
 	
+	
 func apply_bounce_force(body: RigidBody2D) -> void:
 	body.apply_central_impulse(Vector2(bounce_force_x, bounce_force_y))
 	
 	
-func _on_bounce_offable_area_body_entered(body: Node2D) -> void:
-	print(body)
+func _on_bounce_offable_area_body_entered(_body: Node2D) -> void:
 	SignalBus.bounce_offable_entered.emit(get_parent())
 	
 	
-func _on_bounce_offable_area_body_exited(body: Node2D) -> void:
+func _on_bounce_offable_area_body_exited(_body: Node2D) -> void:
 	SignalBus.bounce_offable_exited.emit(get_parent())

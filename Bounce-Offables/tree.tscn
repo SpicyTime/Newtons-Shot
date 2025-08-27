@@ -17,5 +17,5 @@ shape = SubResource("CapsuleShape2D_y5fkr")
 [node name="BounceOffableComponent" type="Node" parent="."]
 script = ExtResource("1_ijw3e")
 bounce_force_x = 150.0
-bounce_force_y = -475.0
+bounce_force_y = -460.0
 metadata/_custom_type_script = "uid://bc0t7kbcs7owo"

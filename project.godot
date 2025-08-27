@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://Game/Autoloads/signal_bus.gd"
 Constants="*res://Game/Autoloads/constants.gd"
+UiManager="*res://Main/ui_manager.gd"
 
 [debug]
 
