@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcqqf4ghb2c21"]
+
+[ext_resource type="Script" uid="uid://bc0t7kbcs7owo" path="res://Bounce-Offables/bounce_offable_component.gd" id="1_ijw3e"]
+[ext_resource type="Texture2D" uid="uid://csu6m44fyvst3" path="res://Terrain System/Textures/Tree.png" id="1_y5fkr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y5fkr"]
+height = 48.0
+
+[node name="Tree" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y5fkr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y5fkr")
+
+[node name="BounceOffableComponent" type="Node" parent="."]
+script = ExtResource("1_ijw3e")
+bounce_force_x = 150.0
+bounce_force_y = -475.0
+metadata/_custom_type_script = "uid://bc0t7kbcs7owo"

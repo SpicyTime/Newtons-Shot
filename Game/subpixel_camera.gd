@@ -19,8 +19,8 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if snap_to_pixels:
-		var snapped: Vector2 = (global_position * pixels_per_unit).round()
-		global_position = snapped
+		var snapped_pos: Vector2 = (global_position * pixels_per_unit).round()
+		global_position = snapped_pos
 	
 	
 func follow_node(node: Node2D, cam_offset: Vector2 = Vector2.ZERO, should_lerp: bool = false) -> void:
@@ -70,5 +70,5 @@ func reset() -> void:
 	cancel_follow = true
 	
 	
-func _on_cannon_fired(rotation: float, force: float) -> void:
+func _on_cannon_fired(_rotation: float, _force: float) -> void:
 	cancel_follow = false

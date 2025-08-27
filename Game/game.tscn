@@ -1,26 +1,29 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccq6vwwjgxhu1"]
+[gd_scene load_steps=16 format=3 uid="uid://ccq6vwwjgxhu1"]
 
 [ext_resource type="Texture2D" uid="uid://b5imera2n8p7t" path="res://Game/Cannon/Cannon.png" id="1_1r4le"]
 [ext_resource type="Script" uid="uid://cqmb26ea2xdvj" path="res://Game/Cannon/cannon.gd" id="1_7raqb"]
 [ext_resource type="Script" uid="uid://clqkvk6q6fppx" path="res://Game/game.gd" id="1_buohc"]
 [ext_resource type="PackedScene" uid="uid://dbgk0ks74rlnx" path="res://Game/subpixel_camera.tscn" id="1_qmv3x"]
 [ext_resource type="Texture2D" uid="uid://ba1nur4ixrkb" path="res://Game/Cannon/Cannon-Wheel.png" id="2_7raqb"]
-[ext_resource type="PackedScene" uid="uid://die5xfxk6qwbs" path="res://Terrain System/Terrain Pieces/t_1.tscn" id="4_7gi1t"]
+[ext_resource type="PackedScene" uid="uid://oduioixsxmj2" path="res://Terrain System/Terrain Pieces/regular_terrain_piece_1.tscn" id="4_7gi1t"]
 [ext_resource type="PackedScene" uid="uid://c7osr3mdl1g5f" path="res://Player/player.tscn" id="4_jcm6v"]
-[ext_resource type="PackedScene" uid="uid://dj61hr4nslhch" path="res://Terrain System/Terrain Pieces/t_2.tscn" id="5_fsxsm"]
+[ext_resource type="PackedScene" uid="uid://b312mw6w43vs2" path="res://Terrain System/Terrain Pieces/regular_terrain_piece_2.tscn" id="5_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://bngdqqkq0tpl5" path="res://Game/Cannon/trajectory_line.tscn" id="5_fwxkx"]
-[ext_resource type="PackedScene" uid="uid://qvop20hpx88n" path="res://Terrain System/Starting Piece/starting_terrain.tscn" id="6_glinl"]
+[ext_resource type="PackedScene" uid="uid://h4ep7ujaj1h6" path="res://Terrain System/Terrain Pieces/starting_terrain_piece.tscn" id="11_fsxsm"]
+[ext_resource type="PackedScene" uid="uid://dcqqf4ghb2c21" path="res://Bounce-Offables/tree.tscn" id="11_glinl"]
 
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_72g0p"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_glinl"]
 resource_name = "Ground"
-scenes/1/scene = ExtResource("4_7gi1t")
-scenes/2/scene = ExtResource("5_fsxsm")
-scenes/3/scene = ExtResource("6_glinl")
+scenes/1/scene = ExtResource("11_fsxsm")
+scenes/2/scene = ExtResource("4_7gi1t")
+scenes/3/scene = ExtResource("5_fsxsm")
 
-[sub_resource type="TileSet" id="TileSet_4lqr4"]
+[sub_resource type="TileSet" id="TileSet_72g0p"]
 tile_size = Vector2i(320, 32)
-terrain_set_0/mode = 0
-sources/0 = SubResource("TileSetScenesCollectionSource_72g0p")
+sources/0 = SubResource("TileSetScenesCollectionSource_glinl")
+
+[sub_resource type="TileSet" id="TileSet_33n3b"]
+tile_size = Vector2i(8, 8)
 
 [sub_resource type="Curve" id="Curve_fwxkx"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.315175), 0.0, 0.0, 0, 0]
@@ -30,16 +33,27 @@ point_count = 2
 script = ExtResource("1_buohc")
 
 [node name="SubpixelCamera" parent="." instance=ExtResource("1_qmv3x")]
+limit_left = -160
+limit_bottom = 90
 smoothing_enabled = true
+
+[node name="Terrain" type="Node2D" parent="."]
+
+[node name="FrontDecor" type="TileMapLayer" parent="Terrain"]
+
+[node name="Ground" type="TileMapLayer" parent="Terrain"]
+position = Vector2(-160, -6)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0, 3, 0, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0, 4, 0, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0)
+tile_set = SubResource("TileSet_72g0p")
+
+[node name="BackDecor" type="TileMapLayer" parent="Terrain"]
+
+[node name="Bounceables" type="TileMapLayer" parent="Terrain"]
+tile_set = SubResource("TileSet_33n3b")
 
 [node name="Player" parent="." instance=ExtResource("4_jcm6v")]
 position = Vector2(-97, 50)
 gravity_scale = 1.0
-
-[node name="Terrain" type="TileMapLayer" parent="."]
-position = Vector2(-160, -6)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, 0)
-tile_set = SubResource("TileSet_4lqr4")
 
 [node name="Cannon" type="Node2D" parent="."]
 position = Vector2(-102, 51)
@@ -57,3 +71,6 @@ texture = ExtResource("1_1r4le")
 [node name="CannonWheelSprite" type="Sprite2D" parent="Cannon"]
 position = Vector2(-3, 10)
 texture = ExtResource("2_7raqb")
+
+[node name="Tree" parent="." instance=ExtResource("11_glinl")]
+position = Vector2(0, 50)
