@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ccq6vwwjgxhu1"]
+[gd_scene load_steps=15 format=3 uid="uid://ccq6vwwjgxhu1"]
 
 [ext_resource type="Texture2D" uid="uid://b5imera2n8p7t" path="res://Game/Cannon/Cannon.png" id="1_1r4le"]
 [ext_resource type="Script" uid="uid://cqmb26ea2xdvj" path="res://Game/Cannon/cannon.gd" id="1_7raqb"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://b312mw6w43vs2" path="res://Terrain System/Terrain Pieces/regular_terrain_piece_2.tscn" id="5_fsxsm"]
 [ext_resource type="PackedScene" uid="uid://bngdqqkq0tpl5" path="res://Game/Cannon/trajectory_line.tscn" id="5_fwxkx"]
 [ext_resource type="PackedScene" uid="uid://h4ep7ujaj1h6" path="res://Terrain System/Terrain Pieces/starting_terrain_piece.tscn" id="11_fsxsm"]
-[ext_resource type="PackedScene" uid="uid://dcqqf4ghb2c21" path="res://Bounce-Offables/tree.tscn" id="11_glinl"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_glinl"]
 resource_name = "Ground"
@@ -71,6 +70,3 @@ texture = ExtResource("1_1r4le")
 [node name="CannonWheelSprite" type="Sprite2D" parent="Cannon"]
 position = Vector2(-3, 10)
 texture = ExtResource("2_7raqb")
-
-[node name="Tree" parent="." instance=ExtResource("11_glinl")]
-position = Vector2(0, 50)

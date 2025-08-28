@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://08cooyg1bvah"]
+
+[ext_resource type="Script" uid="uid://bc0t7kbcs7owo" path="res://Bounce-Offable System/bounce_offable_component.gd" id="1_2lfoc"]
+[ext_resource type="Texture2D" uid="uid://csu6m44fyvst3" path="res://Bounce-Offable System/Textures/Tree.png" id="1_k5bnt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5bnt"]
+radius = 23.0
+
+[node name="Tree" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k5bnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_k5bnt")
+
+[node name="BounceOffableComponent" type="Node" parent="."]
+script = ExtResource("1_2lfoc")
+metadata/_custom_type_script = "uid://bc0t7kbcs7owo"

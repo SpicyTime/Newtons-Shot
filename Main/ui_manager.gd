@@ -11,7 +11,8 @@ var active_overlays: Array[Control] = []
 var active_menu: Control = null
 
 func set_up_ui(canvas_layer: CanvasLayer) -> void:
-	print(canvas_layer == null)
+	pass
+	
 	
 func swap_menu_to(menu_type: MenuType) -> void:
 	if active_menu:

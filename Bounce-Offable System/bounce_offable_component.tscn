@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmoy36umbajbg"]
 
-[ext_resource type="Script" uid="uid://bc0t7kbcs7owo" path="res://Bounce-Offables/bounce_offable_component.gd" id="1_mm85s"]
+[ext_resource type="Script" uid="uid://bc0t7kbcs7owo" path="res://Bounce-Offable System/bounce_offable_component.gd" id="1_mm85s"]
 
 [node name="BounceOffableComponent" type="Node"]
 script = ExtResource("1_mm85s")
