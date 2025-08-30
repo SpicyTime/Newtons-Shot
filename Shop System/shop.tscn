@@ -1,9 +1,64 @@
-[gd_scene format=3 uid="uid://blae5ddggtsn5"]
+[gd_scene load_steps=2 format=3 uid="uid://blae5ddggtsn5"]
 
-[node name="Shop" type="Control"]
-layout_mode = 3
+[ext_resource type="PackedScene" uid="uid://caskgqeghvvs8" path="res://Shop System/purchase_line_slider.tscn" id="1_33h5m"]
+
+[node name="Shop" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="CannonBallModifierContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -82.0
+offset_right = 83.0
+offset_bottom = 144.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="AirResistanceLabel" type="Label" parent="CannonBallModifierContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 12
+text = "Air Resistance"
+horizontal_alignment = 1
+
+[node name="PurchaseLineSlider" parent="CannonBallModifierContainer/AirResistanceLabel" instance=ExtResource("1_33h5m")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.5
+offset_top = 3.0
+offset_right = 101.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MassLabel" type="Label" parent="CannonBallModifierContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 12
+text = "Mass"
+horizontal_alignment = 1
+
+[node name="PurchaseLineSlider" parent="CannonBallModifierContainer/MassLabel" instance=ExtResource("1_33h5m")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.5
+offset_top = 3.0
+offset_right = 102.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0

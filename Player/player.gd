@@ -1,5 +1,8 @@
 class_name Player
 extends RigidBody2D
+const CANNON_X: int = -102
+const GROUND_LINE: int = 75
+
 var is_in_cannon: bool = true 
 var original_position: Vector2 = Vector2.ZERO
 var distance_traveled: int = 0
@@ -43,11 +46,11 @@ func reset() -> void:
 	
 	
 func _calc_height() -> int:
-	return int(global_position.x - Constants.GROUND_LINE) * 10
+	return int(global_position.x - GROUND_LINE) * 10
 	
 	
 func _calc_distance() -> int:
-	return int(global_position.x + abs(Constants.CANNON_X)) * 10
+	return int(global_position.x + abs(CANNON_X)) * 10
 	
 	
 func _on_cannon_fired(cannon_rotation: float, force: float) -> void:

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bd7nybeikhr5e"]
+
+[node name="Tick" type="ColorRect"]
+offset_right = 2.0
+offset_bottom = 18.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
